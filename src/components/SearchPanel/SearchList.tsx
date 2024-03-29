@@ -11,7 +11,7 @@ interface SearchListProps {
   query: string;
 }
 
-const SearchList = ({ query }: SearchListProps) => {
+const SearchList = ({ query }: SearchListProps): JSX.Element => {
   const params = useParams<RouteParams>();
 
   const { data, isLoading } = useQuery({

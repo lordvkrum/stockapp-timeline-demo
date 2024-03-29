@@ -5,7 +5,7 @@ interface SearchInputProps {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchInput = ({ query, setQuery }: SearchInputProps) => {
+const SearchInput = ({ query, setQuery }: SearchInputProps): JSX.Element => {
   return (
     <>
       <input

@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import classNames from "classnames";
 import SearchPanel from "components/SearchPanel/SearchPanel";
 
-function Layout() {
-  const [openMenu, setOpenMenu] = useState(false);
+const Layout = (): JSX.Element => {
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   return (
     <div className="flex flex-col h-screen">
@@ -43,6 +43,6 @@ function Layout() {
       </div>
     </div>
   );
-}
+};
 
 export default Layout;

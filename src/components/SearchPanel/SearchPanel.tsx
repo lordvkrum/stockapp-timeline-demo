@@ -3,7 +3,7 @@ import { useDebounce } from "use-debounce";
 import SearchInput from "./SearchInput";
 import SearchList from "./SearchList";
 
-const SearchPanel = () => {
+const SearchPanel = (): JSX.Element => {
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounce(query, 1000);
 

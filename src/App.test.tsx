@@ -1,15 +1,11 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { renderWrapper } from "testHelpers";
 import App from "./App";
 
 describe("App", () => {
   it("renders App shell", () => {
-    const { baseElement } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
+    const { baseElement } = renderWrapper(<App />);
     expect(baseElement).toBeDefined();
   });
 });
