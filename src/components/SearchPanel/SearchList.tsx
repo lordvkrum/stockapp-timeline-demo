@@ -9,9 +9,10 @@ import Alert from "components/UIElements/Alert";
 
 interface SearchListProps {
   query: string;
+  onClickItem: () => void;
 }
 
-const SearchList = ({ query }: SearchListProps): JSX.Element => {
+const SearchList = ({ query, onClickItem }: SearchListProps): JSX.Element => {
   const params = useParams<RouteParams>();
 
   const { data, isLoading } = useQuery({
@@ -47,6 +48,7 @@ const SearchList = ({ query }: SearchListProps): JSX.Element => {
             className={classNames("w-full p-3", {
               "bg-gray-700": params.symbol === item["1. symbol"],
             })}
+            onClick={onClickItem}
           >
             <Link to={`/${item["1. symbol"]}`}>
               <div className="flex items-center">
