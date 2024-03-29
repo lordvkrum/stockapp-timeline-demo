@@ -38,7 +38,11 @@ Package with Date manipulation utils, useful for formating, sorting and comparis
 
 Package with line charts, useful for data visualization.
 
-## Available Scripts
+## Deployment steps
+
+### APIKEY
+
+In `.env` file you must set a value for `REACT_APP_APIKEY`, default value is `demo` which is limited in the amount of strings that are possible to be searched.
 
 In the project directory, you can run:
 
