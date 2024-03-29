@@ -42,6 +42,7 @@ Package with line charts, useful for data visualization.
 
 ### APIKEY
 
+This project uses [https://www.alphavantage.co/documentation](https://www.alphavantage.co/documentation) api to provide the data. Free apikeys can be generated in their website, 
 In `.env` file you must set a value for `REACT_APP_APIKEY`, default value is `demo` which is limited in the amount of strings that are possible to be searched.
 
 In the project directory, you can run:
