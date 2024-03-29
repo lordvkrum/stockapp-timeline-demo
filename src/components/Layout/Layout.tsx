@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import classNames from "classnames";
+import SearchPanel from "components/SearchPanel/SearchPanel";
 
 function Layout() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -31,7 +32,7 @@ function Layout() {
           )}
           data-testid="side-content"
         >
-          SIDE CONTENT
+          <SearchPanel />
         </aside>
         <main
           className="p-3 sm:ml-64 h-full overflow-y-auto bg-gray-300"
