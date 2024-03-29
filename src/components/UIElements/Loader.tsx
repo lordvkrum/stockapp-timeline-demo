@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loading = () => {
+const Loading = (): JSX.Element => {
   return (
     <div
       className="flex p-3 border rounded-lg border-gray-600 bg-gray-800 text-white"
