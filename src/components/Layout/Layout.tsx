@@ -32,7 +32,7 @@ const Layout = (): JSX.Element => {
           )}
           data-testid="side-content"
         >
-          <SearchPanel />
+          <SearchPanel onClickItem={() => setOpenMenu(false)} />
         </aside>
         <main
           className="p-3 sm:ml-64 h-full overflow-y-auto bg-gray-300"

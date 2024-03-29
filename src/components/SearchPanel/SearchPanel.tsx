@@ -3,7 +3,11 @@ import { useDebounce } from "use-debounce";
 import SearchInput from "./SearchInput";
 import SearchList from "./SearchList";
 
-const SearchPanel = (): JSX.Element => {
+interface SearchPanelProps {
+  onClickItem: () => void;
+}
+
+const SearchPanel = ({ onClickItem }: SearchPanelProps): JSX.Element => {
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounce(query, 1000);
 
@@ -12,7 +16,10 @@ const SearchPanel = (): JSX.Element => {
       <div className="flex items-center max-w-sm mx-auto mb-3">
         <SearchInput query={query} setQuery={setQuery} />
       </div>
-      <SearchList query={!query ? "" : debouncedQuery} />
+      <SearchList
+        query={!query ? "" : debouncedQuery}
+        onClickItem={onClickItem}
+      />
     </div>
   );
 };
