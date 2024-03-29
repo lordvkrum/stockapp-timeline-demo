@@ -12,6 +12,10 @@ Search input to allow users to type and search symbols, these results can be sel
 
 With selected symbol, monthly data is requested and displayed as a list, there results are virtually scrolled (so we don't add overhead to the application) and support sorting over data fields.
 
+### Line chart for year by year data with TIME_SERIES_MONTHLY api
+
+With selected symbol, monthly data is requested and displayed as a chart by year, users can select a year to visualize data (only years with data are selectable) and it defaults to current year.
+
 ## Added Packages
 
 ### `@tanstack/react-query`
@@ -25,6 +29,10 @@ Package that offers virtual scrolling, needed given the large amount of raw data
 ### `date-fns`
 
 Package with Date manipulation utils, useful for formating, sorting and comparison.
+
+### `@nivo/line`
+
+Package with line charts, useful for data visualization.
 
 ## Available Scripts
 

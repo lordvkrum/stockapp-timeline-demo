@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import classNames from "classnames";
 import { MonthlyData } from "models/StockData";
 import { RouteParams } from "models/Navigation";
 import Loading from "components/UIElements/Loader";
 import Alert from "components/UIElements/Alert";
 import PricesList from "./PricesList";
+import MonthlyChart from "./MonthlyChart";
+
+enum TabsEnum {
+  list = "list",
+  monthly = "monthly",
+}
+
+const tabLabels = {
+  [TabsEnum.list]: "Prices List",
+  [TabsEnum.monthly]: "Monthly Chart",
+};
 
 const TabsWrapper = (): JSX.Element => {
   const params = useParams<RouteParams>();
-  const [selectedTab, setSelectedTab] = useState("list");
+  const [selectedTab, setSelectedTab] = useState<TabsEnum>(TabsEnum.list);
 
   const { data, isLoading } = useQuery({
     queryKey: ["monthly-data", { query: params.symbol }],
@@ -38,21 +50,27 @@ const TabsWrapper = (): JSX.Element => {
           className="flex flex-wrap -mb-px text-sm font-medium"
           role="tablist"
         >
-          <li role="presentation">
-            <button
-              className={
-                "p-3 border-b-2 text-blue-700 border-blue-700 hover:text-blue-700"
-              }
-              role="tab"
-              onClick={() => setSelectedTab("list")}
-            >
-              Prices List
-            </button>
-          </li>
+          {Object.values(TabsEnum).map((tab) => {
+            return (
+              <li key={tab} role="presentation">
+                <button
+                  className={classNames("p-3 hover:text-blue-700", {
+                    "border-b-2 text-blue-700 border-blue-700":
+                      selectedTab === tab,
+                  })}
+                  role="tab"
+                  onClick={() => setSelectedTab(tab)}
+                >
+                  {tabLabels[tab]}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div role="tabpanel" className="flex-1 overflow-y-auto">
-        {selectedTab === "list" && <PricesList data={data} />}
+        {selectedTab === TabsEnum.list && <PricesList data={data} />}
+        {selectedTab === TabsEnum.monthly && <MonthlyChart data={data} />}
       </div>
     </div>
   );
