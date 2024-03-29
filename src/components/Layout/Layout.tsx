@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import classNames from "classnames";
-import SearchPanel from "../SearchPanel/SearchPanel";
+import SearchPanel from "components/SearchPanel/SearchPanel";
 
 function Layout() {
   const [openMenu, setOpenMenu] = useState(false);

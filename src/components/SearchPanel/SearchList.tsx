@@ -2,8 +2,10 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
-import { SearchAPIResponse } from "../../models/StockData";
-import { RouteParams } from "../../models/Navigation";
+import { SearchAPIResponse } from "models/StockData";
+import { RouteParams } from "models/Navigation";
+import Loading from "components/UIElements/Loader";
+import Alert from "components/UIElements/Alert";
 
 interface SearchListProps {
   query: string;
@@ -23,6 +25,18 @@ const SearchList = ({ query }: SearchListProps) => {
     },
     enabled: !!query,
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!query) {
+    return <Alert text="Type something to search" />;
+  }
+
+  if (data?.length === 0) {
+    return <Alert text={`No results for "${query}"`} />;
+  }
 
   return (
     <ul className="max-w-md divide-y divide-gray-700 flex-1 overflow-y-auto text-white">
