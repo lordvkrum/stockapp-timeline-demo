@@ -8,11 +8,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Search input to allow users to type and search symbols, these results can be selected for more functionality.
 
+### List of raw data for prices list with TIME_SERIES_MONTHLY api
+
+With selected symbol, monthly data is requested and displayed as a list, there results are virtually scrolled (so we don't add overhead to the application) and support sorting over data fields.
+
 ## Added Packages
 
 ### `@tanstack/react-query`
 
 Package that offers caching for data out of the box, which is ideal for `alphavantage` api consumption given that free accounts have a limit of requests per day.
+
+### `react-virtuoso`
+
+Package that offers virtual scrolling, needed given the large amount of raw data for monthly prices list.
+
+### `date-fns`
+
+Package with Date manipulation utils, useful for formating, sorting and comparison.
 
 ## Available Scripts
 
