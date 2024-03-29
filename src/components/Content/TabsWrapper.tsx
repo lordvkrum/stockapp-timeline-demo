@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
@@ -8,15 +8,18 @@ import Loading from "components/UIElements/Loader";
 import Alert from "components/UIElements/Alert";
 import PricesList from "./PricesList";
 import MonthlyChart from "./MonthlyChart";
+import YearlyChart from "./YearlyChart";
 
 enum TabsEnum {
   list = "list",
   monthly = "monthly",
+  yearly = "yearly",
 }
 
 const tabLabels = {
   [TabsEnum.list]: "Prices List",
   [TabsEnum.monthly]: "Monthly Chart",
+  [TabsEnum.yearly]: "Yearly Timeline",
 };
 
 const TabsWrapper = (): JSX.Element => {
@@ -34,6 +37,10 @@ const TabsWrapper = (): JSX.Element => {
     },
     enabled: !!params.symbol,
   });
+
+  useEffect(() => {
+    setSelectedTab(TabsEnum.list);
+  }, [params.symbol]);
 
   if (isLoading) {
     return <Loading />;
@@ -71,6 +78,7 @@ const TabsWrapper = (): JSX.Element => {
       <div role="tabpanel" className="flex-1 overflow-y-auto">
         {selectedTab === TabsEnum.list && <PricesList data={data} />}
         {selectedTab === TabsEnum.monthly && <MonthlyChart data={data} />}
+        {selectedTab === TabsEnum.yearly && <YearlyChart data={data} />}
       </div>
     </div>
   );

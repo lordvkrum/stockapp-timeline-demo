@@ -16,6 +16,10 @@ With selected symbol, monthly data is requested and displayed as a list, there r
 
 With selected symbol, monthly data is requested and displayed as a chart by year, users can select a year to visualize data (only years with data are selectable) and it defaults to current year.
 
+### Line chart for yearly timeline with TIME_SERIES_MONTHLY api
+
+With selected symbol, last month of year data is displayed in an animated timeline chart that progresses from the begining of historic records to current year.
+
 ## Added Packages
 
 ### `@tanstack/react-query`
